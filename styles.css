@@ -1,0 +1,118 @@
+/*---------------------------------------
+   General Styles 
+-----------------------------------------*/
+*{
+	margin: 0;
+	padding: 0;
+	font-family: arial, helvetica, sans-serif;
+}
+body{ background-color: #36b1c5; }
+h1{
+	width: 960px;
+	margin: 30px auto 0;
+	font-family: 'harry_pregular';
+	font-size: 150px;
+	text-align: center;
+	color: #0e4149;
+}
+.instructions, #fact{
+	color: #000;
+	font-size: 11px;
+	text-align: center;
+	width: 500px;
+	margin: 5px auto;
+}
+#fact{
+	font-size: 16px;
+	line-height: 26px;
+	text-align: left;
+	min-height: 80px;
+	margin: 40px auto;
+}
+
+/*---------------------------------------
+   Animation Styles 
+-----------------------------------------*/
+#animation{
+	display: block;
+	margin: 20px auto;
+	border-bottom: 1px solid #0e4149;
+}
+
+/*---------------------------------------
+   Hoop Styles 
+-----------------------------------------*/
+.hoop{
+	fill: none;
+	stroke: #0e4149;
+	stroke-width: 3px;
+}
+
+/*---------------------------------------
+   Tower Styles 
+-----------------------------------------*/
+.dark{
+	fill: #116977;
+	stroke: #116977;
+	stroke-width: 1px;
+}
+.light{
+	fill: #d9edf0;
+	stroke: #d9edf0;
+	stroke-width: 1px;
+}
+
+/*---------------------------------------
+   Hill Styles 
+-----------------------------------------*/
+.backLayer{ 
+	fill: #97d4de;
+	stroke: #0e4149;
+	stroke-width: 1px;
+}
+.frontLayer{ 
+	fill: #2ba1b4; 
+	stroke: #0e4149;
+	stroke-width: 2px;
+}
+
+/*---------------------------------------
+   Harry Styles 
+-----------------------------------------*/
+.frontBody{
+	fill: #7D000D; 
+	stroke: #ab2a3c;
+	stroke-width: 1px;
+}
+.backBody{
+	fill: #330104;
+	stroke: #52100d;
+	stroke-width: 1px;
+}
+.skin{
+	fill: #f6c695;
+	stroke: #f6c695;
+	stroke-width: 1px;
+}
+#face{
+	fill: #fff;
+	stroke: #333;
+	stroke-width: 2px;
+}
+
+
+/*---------------------------------------
+   Portfolio Alert Styles 
+-----------------------------------------*/
+#footer{
+  padding: 20px;
+  text-align:center;
+  font-size:14px;
+  border-top: 1px solid #fff;
+  background: #36b1c5;
+}
+#footer a, #footer a:visited{
+  color:#fff;
+  font-weight: normal;
+}
+#footer a:hover{text-decoration: underline;}

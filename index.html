@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	<title>Interactive SVG Animation</title>
+	<link rel="stylesheet" href="styles.css" type="text/css" />
+	<link rel="stylesheet" href="fonts/font.css" type="text/css" />
+	<script type="text/javascript" src="facts.js"></script>
+  	<script type="text/javascript" src="scripts.js"></script>
+</head>
+<body onload="init();">
+	
+	<h1>Catch the Snitch</h1>
+	<p class="instructions"><strong>Please view this page in Opera.</strong> SVG animations are not fully supported by IE, Firefox, or Chrome.</p>
+	
+	<!-- Animation -->
+	<svg id="animation" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" width="700px" height="420px">
+		<defs>
+			<!-- Hoops -->
+			<g id="hoops">
+				<line x1="0" y1="0" x2="0" y2="-100px" class="hoop" />
+				<circle cx="0" cy="-120px" r="20px" class="hoop" />
+				<line x1="30px" y1="0" x2="30px" y2="-150px" class="hoop" />
+				<circle cx="30px" cy="-170px" r="20px" class="hoop" />
+				<line x1="70px" y1="0" x2="70px" y2="-120px" class="hoop" />
+				<circle cx="70px" cy="-140px" r="20px" class="hoop" />
+			</g>
+			
+			<!-- Tower Components -->
+			<g id="towTop">
+				<polygon id="towTop" points="0,0 52,0 26,-26" class="dark" />
+				<rect x="-1px" y="0" width="53px" height="40px" fill="#0e4149" />
+			</g>
+			<g id="rowD">
+				<rect x="0" y="0" width="25px" height="25px" class="dark" />
+				<rect x="26px" y="0" width="25px" height="25px" class="light" />
+			</g>
+			<g id="rowL">
+				<rect x="0" y="0" width="25px" height="25px" class="light" />
+				<rect x="26px" y="0" width="25px" height="25px" class="dark" />
+			</g>	
+			
+			<!-- Tower -->
+			<g id="tower">
+				<use x="0" y="0" xlink:href="#towTop" />
+				<use x="0" y="40px" xlink:href="#rowD" />
+				<use x="0" y="66px" xlink:href="#rowL" />
+				<use x="0" y="92px" xlink:href="#rowD" />
+				<use x="0" y="118px" xlink:href="#rowL" />
+				<use x="0" y="144px" xlink:href="#rowD" />
+				<use x="0" y="170px" xlink:href="#rowL" />
+				<use x="0" y="196px" xlink:href="#rowD" />
+			</g>
+			
+			<!-- Hill -->
+			<path id="hill" d="M 0,0 q 250,-300 500,0" />
+			
+			<!-- Harry's Body -->
+			<g id="body">	
+				<!-- Foot - Created in Illustrator -->
+				<path d="M276.288,284.056c0,0-56.881,82.388-13.463,77.104 c33.255-4.048,33.778-62.532,33.778-62.532L276.288,284.056z"/>
+				
+				<!-- Body - Created in Illustrator -->
+				<path  d="M406.624,237.947c0,0,18.253,18.016-17.957,27.321
+					c0,0-4.852,0.13-43.654-12.114c0,0,51.793,42.402,3.466,57.62s-30.993,12.554-61.21,16.479c-30.216,3.924-3.312-41.592-3.312-41.592
+					l22.457-6.373c0,0-52.748-30.438-51.853-51.469c2.038-47.908,126.039-106.088,96.138-12.101
+					C350.699,215.718,390.879,221.239,406.624,237.947z"/>
+			</g>
+			
+			<!-- Harry's Face -->			
+			<g id="face">
+				<!-- Scar - Created in Illustrator -->
+				<polygon fill="#bc736b" stroke-width="0" points="398.265,137.68 396.501,153.284 403.109,150.555 404.751,160.583 404.931,147.243 399.216,149.512"/>
+			
+				<!-- Glasses -->
+				<circle cx="395px" cy="170px" r="12px" />
+				<circle cx="425px" cy="170px" r="12px" />
+				<line x1="355px" y1="160px" x2="383px" y2="170px" />
+				<line x1="407px" y1="170px" x2="413px" y2="170px" />
+				<line x1="437px" y1="170px" x2="450px" y2="165px" />
+				
+				<!-- Eyes -->
+				<g id="eye">
+					<!-- Iris -->
+					<circle cx="398px" cy="173px" r="4px" fill="#4e8836" stroke-width="0">
+						<animate attributeName="cx" from="398" to="392" dur="2s" id="lookLeft" />
+						<animate attributeName="cx" from="392" to="398" dur="2s" begin="lookLeft.end" onend="restartAnimation(this,'animate');" />
+					</circle>
+					<!-- Pupil -->
+					<circle cx="398px" cy="173px" r="2px" fill="#000" stroke-width="0">
+						<animate attributeName="cx" from="398" to="392" dur="2s" id="lookLeft2" />
+						<animate attributeName="cx" from="392" to="398" dur="2s" begin="lookLeft2.end" onend="restartAnimation(this,'animate');" />
+					</circle>
+					
+				</g>
+				<use x="30" y="0" xlink:href="#eye" />
+				
+				<!-- Nose -->
+				<line x1="410px" y1="180px" x2="413px" y2="193px" />
+				
+				<!-- Mouth -->
+				<path fill="none" stroke="#231F20" d="M 400,200 Q 413,206 426,200" transform="rotate(-15,413,203)"/>				
+			</g>
+			
+			<!-- Snitch Wing - Created in Illustrator -->
+			<path id="snitchWing" fill="#fff" d="M0,3.94c0,0,11.192-4.851,26.636,0.788c7.53,2.75,20.173-3.31,21.119-4.729c0,0-8.826,19.386-34.516,20.017 C13.239,20.017,13.239,7.972,0,3.94z">
+				<animateTransform attributeName="transform" type="rotate" from="0 0 0" to="-60 0 0" dur="80ms" id="wingFlap" />
+				<animateTransform attributeName="transform" type="rotate" from="-60 0 0" to="0 0 0" dur="80ms" begin="wingFlap.end" onend="restartAnimation(this,'animateTransform')" />
+			</path>
+			
+			<!-- Snitch Path - Created in Illustrator -->
+			<path id="snitchPath" fill="none" stroke="#F7941E" d="M47.925-33.279c0,0,89.333,122,233.333,102
+				s289.333-57.333,347.333,103.333s175.333,80.667,175.333,80.667l10,86l-76.666,182.667c0,0-134.667-165.333-250.667-153.333
+				s-248,61.333-339.333-47.333s-294.667,35.333-294.667,35.333S-229.408-217.945,47.925-33.279z"/>
+			
+			<!-- Fading Gradients -->
+			<linearGradient id="fadeGradientLeft" x1="0%" y1="0%" x2="100%" y2="0%" spreadMethod="pad">
+				<stop offset="0%" stop-color="#36b1c5" stop-opacity="1"/>
+				<stop offset="20%" stop-color="#36b1c5" stop-opacity="0"/>
+			</linearGradient>
+			<linearGradient id="fadeGradientRight" x1="0%" y1="0%" x2="100%" y2="0%" spreadMethod="pad">
+				<stop offset="80%" stop-color="#36b1c5" stop-opacity="0"/>
+				<stop offset="100%" stop-color="#36b1c5" stop-opacity="1"/>
+			</linearGradient>
+		</defs>
+		
+		
+		<!-- Back Layer of Hills -->
+		<use class="backLayer" width="750px" x="50px" y="340px" xlink:href="#hill" transform="scale(1.5,1.25)" onload="slideLeft(this,3);" />
+		<use class="backLayer" width="750px" x="550px" y="340px" xlink:href="#hill" transform="scale(1.5,1.25)" onload="slideLeft(this,3);" />
+		<use class="backLayer" width="750px" x="275px" y="370px" xlink:href="#hill" transform="scale(1.5,1.15)" onload="slideLeft(this,3);" />
+		<use class="backLayer" width="750px" x="-300px" y="370px" xlink:href="#hill" transform="scale(1.5,1.15)" onload="slideLeft(this,3);" />
+		<use class="backLayer" width="750px" x="775px" y="370px" xlink:href="#hill" transform="scale(1.5,1.15)" onload="slideLeft(this,3);"  />
+
+		<!-- Front Layer of Hills -->
+		<use class="frontLayer" width="500px" x="-100px" y="700px" xlink:href="#hill" transform="scale(1,0.6)" onload="slideLeft(this,6);" />
+		<use class="frontLayer" width="500px" x="600px" y="495px" xlink:href="#hill" transform="scale(1,0.85)" onload="slideLeft(this,6);" />
+		<use class="frontLayer" width="500px" x="280px" y="600px" xlink:href="#hill" transform="scale(1,0.7)" onload="slideLeft(this,6);" />
+		<use class="frontLayer" width="500px" x="850px" y="600px" xlink:href="#hill" transform="scale(1,0.7)" onload="slideLeft(this,6);" />
+		
+		<!-- Quidditch Pitch -->
+		<use width="90px" x="50px" y="420px" xlink:href="#hoops" onload="slideLeft(this,9);" />
+		<use width="90px" x="220px" y="200px" xlink:href="#tower" onload="slideLeft(this,9);" />
+		<use width="90px" x="370px" y="200px" xlink:href="#tower" onload="slideLeft(this,9);" />
+		<use width="90px" x="520px" y="200px" xlink:href="#tower" onload="slideLeft(this,9);" />
+		<use width="90px" x="670px" y="200px" xlink:href="#tower" onload="slideLeft(this,9);" />
+		
+		<!-- Gradients used to fade out left and right edges of background -->
+		<rect x="0" y="0" width="100%" height="100%" fill="url(#fadeGradientLeft)" />
+		<rect x="0" y="0" width="100%" height="100%" fill="url(#fadeGradientRight)" />
+		
+		<!-- Harry -->
+		<g id="harry" y="0">
+			<!-- Back Body -->
+			<use x="20px" y="20px" xlink:href="#body" class="backBody" />
+			
+			<!-- Broom Handle -->
+			<rect x="225px" y="228px" rx="20" ry="20" width="380px" height="24px" fill="#391810" transform="rotate(3,190,12)" />
+			
+			<!-- Hand -->
+			<circle class="skin" cx="420px" cy="250px" r="27px" />
+			
+			<!-- Front Body -->		
+			<use x="0" y="0" xlink:href="#body" class="frontBody" />		
+					
+			<!-- Shadow on Body - Created in Illustrator -->
+			<path class="backBody" stroke="#8B0919" d="M347.27,254.563c0,0-51.882-34.707-60.061-37.374 c0,0,17.717-0.337,28.615-9.01c0,0-5.275,18.379,0.095,23.503C321.289,236.805,347.27,254.563,347.27,254.563z"/>
+				
+			<!-- Robe/Cloak - Created in Illustrator -->	
+			<path fill="#AE172A" stroke="#FEC637" d="M266.142,171.926c-47.291,16.212-87.862-27.452-41.429-35.744 c0,0-35.819-16.465-44.41,24.507c-10.016,47.77,139.39,84.837,181.47,18.247C367.488,169.893,342.021,145.913,266.142,171.926z">
+				<animateTransform attributeName="transform" type="rotate" from="0 368 182" to="10 368 182" dur="1s" id="cloakFlap" />
+				<animateTransform attributeName="transform" type="rotate" from="10 368 182" to="0 368 182" dur="1s" begin="cloakFlap.end" onend="restartAnimation(this,'animateTransform');" />
+			</path>
+			
+			<!-- Head -->
+			<circle class="skin" cx="400px" cy="165px" r="49px" />
+			<use x="0" y="0" xlink:href="#face" />	
+			
+			<!-- Hair - Created in Illustrator -->	
+			<path fill="#231F20" stroke="#231F20" d="M396.77,133.621c0,0-5.458,17.333-22.845,19.685
+				c0,0,7.165,32.895-8.179,29.998c-15.343-2.896-2.045-2.484-15.343-2.896c-13.298-0.413-7.403-9.556-4.449-14.129
+				c0,0-5.272-0.422-1.909-4.083c0,0-6.924-10.832,0.055-9.386c0,0-5.2-19.702,10.21-31.321c0,0,9.378-26.473,14.035-15.072
+				c0.291,0.711,0.563,1.569,0.813,2.589c0,0,9.478-17.037,7.419-2.856c0,0,17.043-23.96,14.21-10.648c0,0,22.544-14.458,35.022,7.637
+				s30.039,6.155,30.039,6.155s18.243-2.621-4.657,17.081c0,0,16.603,1.732,1.109,9.897c-15.494,8.165-21,6.613-21,6.613
+				S425.195,160.825,396.77,133.621z"/>
+				
+			<!-- Broom End - Created in Illustrator -->	
+			<path fill="#e3b972" d="M60,197.521c0,0,25.879,116.787,122.113,86.483 c82.506-25.98,32.754-122.691-70.217-88.147C64.533,211.745,60,197.521,60,197.521z">
+				<animateTransform attributeName="transform" type="rotate" from="0 224 245" to="5 224 245" dur="1s" id="broomFlap" />
+				<animateTransform attributeName="transform" type="rotate" from="5 224 245" to="0 224 245" dur="1s" begin="broomFlap.end" onend="restartAnimation(this,'animateTransform');" />
+			</path>
+			
+			<!-- Rise and Fall Animation -->
+			<animateMotion from="0,0" to="0,-30" dur="1s" id="rise" />
+			<animateMotion from="0,-30" to="0,0" dur="1s" begin="rise.end" onend="restartAnimation(this,'animateMotion');" />
+		</g>
+		
+		<!-- Golden Snitch -->
+		<g id="snitch">
+			<use x="0px" y="-20px" xlink:href="#snitchWing" transform="translate(50,0), scale(-1,1)" />
+			<use x="70px" y="-20px" xlink:href="#snitchWing" />
+			<circle cx="60px" cy="-20px" r="15px" fill="#fcdd42" />
+			<animateMotion begin="3s" dur="10s" repeatCount="indefinite">
+				<mpath xlink:href="#snitchPath" />
+			</animateMotion>
+		</g>
+	</svg>
+	<p class="instructions">Hover over the snitch to receive a random Quidditch fact.</p>
+	<p id="fact"></p>
+
+	<div id="footer">Copyright &copy; 2014 <a href="http://www.carlacrandall.com">Carla Crandall</a></div>
+</body>
+</html>

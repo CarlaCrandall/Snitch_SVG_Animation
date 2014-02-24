@@ -1,0 +1,22 @@
+//facts taken from http://harrypotter.wikia.com/wiki/Quidditch, en.wikipedia.org/wiki/Quidditch, and http://en.wikipedia.org/wiki/Muggle_Quidditch
+var facts = [];
+facts[0] = "Quidditch is played by two teams of seven people (three Chasers, two Beaters, one Keeper, and one Seeker) and involves four balls (a Quaffle, two Bludgers, and a Golden Snitch).";
+facts[1] = "The game ends when the Snitch is caught or an agreement is reached between the captains of both teams. Some games can go on for many days if the Snitch is not caught.";
+facts[2] = "The record for the longest game of Quidditch, according to Quidditch Through the Ages, is six months.";
+facts[3] = "The game starts with the referee releasing all four balls from the central circle. The Bludgers and Snitch are bewitched to fly off of their own accord, but the Quaffle is thrown into the air by the referee to signal the start of play.";
+facts[4] = "The Snitch is bewitched to respond to the first witch or wizard to make contact with it, in case there is any dispute regarding which Seeker touched it first."
+facts[5] = "There are seven hundred Quidditch fouls listed in the Department of Magical Games and Sports records, though the entire list has never been made public.";
+facts[6] = "The Wronski Feint is a Quidditch tactic in which a Seeker from high above dives down, sharply, as if to collect the Snitch, causing the opposing Seeker to chase after him, only to pull up at the last second, causing the opposing Seeker to crash into the ground below. ";
+facts[7] = "The Sloth Grip Roll is a Quidditch tactic in which a player hangs upside down on their broomstick to avoid a Bludger.";
+facts[8] = "The sport of Quidditch gets its name from Queerditch Marsh, the location of the first recorded game.";
+facts[9] = "No substitution of players is allowed throughout the game, even if a player is too injured or tired to continue to play.";
+facts[10] = "Players may take their wands onto the pitch, but they must not be used on or against any players, any players' broomsticks, the referee, any of the four balls, or the spectators.";
+facts[11] = "A Snitchgrip foul occurs when any player other than the Seeker touches or catches the Golden Snitch";
+facts[12] = "During the final of the 1473 Quidditch World Cup, all seven hundred Quidditch fouls were committed.";
+facts[13] = "The Transylvanian Tackle is a Quidditch tactic in which a player fakes a punch to the nose to confuse the opponent (as long as contact is not made, it is not illegal). ";
+facts[14] = "The International Confederation of Wizards' Quidditch Committee is the international body that oversees the game of Quidditch. ";
+facts[15] = 'Quodpot is a variant of Quidditch popular in the United States. There are eleven players on a side, who throw the Quod, a Quaffle modified to explode after a certain amount of time, from player to player, attempting to get it into the "pot" at the end of the pitch before it explodes.';
+facts[16] = "Muggle Quidditch is a variant of Quidditch, adapted for muggles to play on the ground. The International Quidditch Association serves as the main association for Muggle Quidditch and helps organize roughly 1000 teams worldwide."
+facts[17] = "A Cobbing foul occurs when a player makes excessive use of their elbows against an opponent.";
+facts[18] = "Players must not stray over the boundary lines of the pitch, although they may fly as high as desired.";
+facts[19] = "Players are not allowed to attack one another by wand, hand or broom.";
